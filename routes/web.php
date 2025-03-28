@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UrlController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -11,5 +12,9 @@ Route::get('dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/settings.php';
-require __DIR__.'/auth.php';
+Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
+    Route::resource('/url', UrlController::class);
+});
+
+require __DIR__ . '/settings.php';
+require __DIR__ . '/auth.php';
