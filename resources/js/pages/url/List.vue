@@ -53,6 +53,12 @@ const handlePageChange = (newPage: number) => {
                         <h6 class="font-medium text-sm" v-if="url.title">{{ url.title }}</h6>
                         <h3 class="font-semibold text-lg">{{ appDomain }}/{{ url.short_url }}</h3>
                         <p class="text-sm text-gray-500">{{ url.original_url }}</p>
+                        <div class="mt-2">
+                            <a :href="`/dashboard/url/${url.id}/analytics`"
+                                class="text-sm text-blue-600 hover:text-blue-800">
+                                View Analytics
+                            </a>
+                        </div>
                     </div>
                 </div>
             </Card>
