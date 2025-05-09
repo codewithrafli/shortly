@@ -70,4 +70,13 @@ class UrlController extends Controller
     {
         //
     }
+
+    /**
+     * Redirect to the original URL from short URL
+     */
+    public function redirect(string $shortUrl)
+    {
+        $url = Url::where('short_url', $shortUrl)->firstOrFail();
+        return redirect($url->original_url);
+    }
 }
