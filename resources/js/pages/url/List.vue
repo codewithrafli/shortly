@@ -5,13 +5,13 @@ import { Head, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import { Card } from '@/components/ui/card';
 import QrcodeVue from 'qrcode.vue'
-import { format } from 'date-fns';
+import { formatToClientTimezone } from '@/helpers/format';
 
 const appDomain = import.meta.env.VITE_APP_DOMAIN;
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Url',
+        title: 'Tautan',
         href: '/url',
     },
 ];
@@ -40,7 +40,6 @@ const urls = computed(() => page.props.urls as Url[]);
                         <h6 class="font-medium text-sm" v-if="url.title">{{ url.title }}</h6>
                         <h3 class="font-semibold text-lg">{{ appDomain }}/{{ url.short_url }}</h3>
                         <p class="text-sm text-gray-500">{{ url.original_url }}</p>
-                        <p class="text-xs text-gray-400">{{ format(new Date(url.created_at), 'dd MMM yyyy HH:mm') }}</p>
                     </div>
                 </div>
             </Card>

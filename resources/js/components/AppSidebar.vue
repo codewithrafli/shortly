@@ -14,7 +14,7 @@ const mainNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
     {
-        title: 'Url',
+        title: 'Tautan',
         href: '/dashboard/url',
         icon: Paperclip,
     },
